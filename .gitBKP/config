@@ -1,0 +1,10 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "joxflixnew"]
+	url = git remote add origin https://github.com/JosiasPDC/joxflixnew.git
+	fetch = +refs/heads/*:refs/remotes/joxflixnew/*
