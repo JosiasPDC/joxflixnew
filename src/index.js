@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './pages/Home';
-import CadastroVideo from './pages/cadastro/Video';
-import CadastroCategoria from './pages/cadastro/Categoria';
 
 import{
   BrowserRouter, Switch, Route
 } from 'react-router-dom';
+
+import Home from './pages/Home';
+import CadastroVideo from './pages/cadastro/Video';
+import CadastroCategoria from './pages/cadastro/Categoria';
 import NotFound from './pages/notfound';
 
 //Forma correta de fazer um pequeno teste
@@ -18,7 +19,7 @@ ReactDOM.render(
   //Depois do import do BrowserRouter, Switch, Route
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={App} exact/>
+      <Route path="/" component={Home} exact/>
       <Route path="/cadastro/video" component={CadastroVideo} />
       <Route path="/cadastro/categoria" component={CadastroCategoria} />
       <Route component={NotFound} /> 

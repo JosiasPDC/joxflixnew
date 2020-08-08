@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForms';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -10,23 +11,10 @@ function CadastroCategoria() {
     descricao: '',
     cor: '',
   };
-  const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
 
-  function setValue(chave, valor) {
-    // chave: nome, descricao, bla, bli
-    setValues({
-      ...values,
-      [chave]: valor, // nome: 'valor'
-    });
-  }
+  const { handleChange, values, clearForm} = useForm(valoresIniciais);
 
-  function handleChange(infosDoEvento) {
-    setValue(
-      infosDoEvento.target.getAttribute('name'),
-      infosDoEvento.target.value,
-    );
-  }
+  const [categorias, setCategorias] = useState([]);  
 
   // ============
 
@@ -62,7 +50,7 @@ function CadastroCategoria() {
           values,
         ]);
 
-        setValues(valoresIniciais);
+        clearForm();
       }}
       >
 
@@ -89,10 +77,11 @@ function CadastroCategoria() {
           value={values.cor}
           onChange={handleChange}
         />
-
-        <Button>
-          Cadastrar
-        </Button>
+        <Link>
+          <Button>
+            Cadastrar
+          </Button>
+        </Link>
       </form>
 
       {categorias.length === 0 && (<div>Loading.............</div>)}
