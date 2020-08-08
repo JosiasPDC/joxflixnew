@@ -76,9 +76,6 @@ function CadastroCategoria() {
           name="cor"
           value={values.cor}
           onChange={handleChange}
-          suggestions={[categorias]
-
-          }
         />
         
           <button>
