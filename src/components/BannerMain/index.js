@@ -50,6 +50,6 @@ BannerMain.defaultProps = {
 
 BannerMain.propTypes = {
   videoTitle: PropTypes.string.isRequired,
-  videoDescription: PropTypes.string.isRequired,
+  videoDescription: PropTypes.string,
   url: PropTypes.string.isRequired,
 };

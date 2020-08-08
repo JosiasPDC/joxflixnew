@@ -30,10 +30,6 @@ export const VideoCardContainer = styled.a`
     margin-left: 20px;
   }
   
-  @keyframes pulse{
-    25%  {transform: scale(0.9);}
-    75%  {transform: scale(1.1);}
-  }
 `;
 
 export const PulseEffect = styled.section`

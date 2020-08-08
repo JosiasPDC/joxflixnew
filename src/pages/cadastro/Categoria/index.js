@@ -76,12 +76,15 @@ function CadastroCategoria() {
           name="cor"
           value={values.cor}
           onChange={handleChange}
+          suggestions={[categorias]
+
+          }
         />
-        <Link>
-          <Button>
+        
+          <button>
             Cadastrar
-          </Button>
-        </Link>
+          </button>
+          
       </form>
 
       {categorias.length === 0 && (<div>Loading.............</div>)}

@@ -11,6 +11,7 @@ function CadastroVideo(){
   const history = useHistory();
   const [categorias, setCategorias] = useState([]); 
   const categoryTitles = categorias.map(({ titulo }) => titulo); 
+  console.log(categoryTitles);
   const { handleChange, values } = useForm({
     titulo: 'Video padrão',
     url: 'https://www.youtube.com/watch?v=jOAU81jdi-c',
@@ -27,29 +28,23 @@ function CadastroVideo(){
         console.log(err.Message);
       });    
   }, []);
-  // useEffect(() => {
-  //   categoriasRepository.getAll()
-  //     .then((categorias) => {
-  //         console.log(categorias);
-  //         //setDadosIniciais(categoriasComVideos);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.Message);
-  //     });    
-  // }, []);
-
 
   return(
     <PageDefault>
         <h1>Cadatastro de vídeo: 
-        {values.nome}</h1>
+        {values.titulo}</h1>
         
         <form onSubmit={(event) => {
         event.preventDefault();
+          const categoriaIdEscolhida = categorias.find((categoria) => {
+              return categoria.titulo === values.categoria;
+          });
+
+
           videosRepository.create({
-            titulo: 'Flappy Bird',//values.titulo,
-            url: 'https://www.youtube.com/watch?v=jOAU81jdi-c',//values.url, 
-            categoriaId: 1,
+            titulo: values.titulo,
+            url: values.url, 
+            categoriaId: categoriaIdEscolhida.id,
           }).then(() => {
             history.push('/');
           });
@@ -58,7 +53,7 @@ function CadastroVideo(){
 
         <FormField
           label="Título do vídeo"
-          name="nome"
+          name="titulo"
           value={values.titulo}
           onChange={handleChange}
         />
@@ -73,15 +68,15 @@ function CadastroVideo(){
 
         <FormField
           label="Categoria"
-          name="nome"
+          name="categoria"
           value={values.categoria}
           onChange={handleChange}
           suggestions={categoryTitles}
         />
 
-        <Button type="submit">
+        <button type="submit">
           Cadastrar
-        </Button>
+        </button>
       </form>
 
       <br />
