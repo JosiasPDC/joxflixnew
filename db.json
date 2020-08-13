@@ -40,6 +40,16 @@
         "text": "Formação de Jogos na Alura",
         "url": "https://www.alura.com.br/cursos-online-front-end"
       }
+    },
+    {
+      "titulo": "Treino Calistênico",
+      "descricao": "Os melhores vídeos para iniciar na calistenia",
+      "cor": "#9ea108",
+      "link_extra": {
+        "text": "Rotinas de treino calistênicos do básico ao avançado",
+        "url": "https://www.calisteniabrasil.com.br/basico"
+      },
+      "id": 6
     }
   ],
   "videos": [
@@ -192,6 +202,17 @@
       "url": "https://www.youtube.com/watch?v=jOAU81jdi-c",
       "categoriaId": 1,
       "id": 25
+    },
+    {
+      "titulo": "Pare de fazer treino assim",
+      "url": "https://www.youtube.com/watch?v=AywKe_K5GE4&t=593s",
+      "categoriaId": 6,
+      "id": 26
+    }
+  ],
+  "login": [
+    {
+      "login": ""
     }
   ]
 }

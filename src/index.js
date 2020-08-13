@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import{
-  BrowserRouter, Switch, Route
+  BrowserRouter, Switch, Route, Redirect
 } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -11,17 +11,28 @@ import CadastroVideo from './pages/cadastro/Video';
 import CadastroCategoria from './pages/cadastro/Categoria';
 import NotFound from './pages/notfound';
 
-//Forma correta de fazer um pequeno teste
-// const Pagina404 = () => (<div id="notfound">Página 404</div>);
+import { isAuthenticated } from "./services/auth";
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+      )
+    }
+  />
+);
 
 ReactDOM.render(
   //Depois do import do BrowserRouter, Switch, Route
   <BrowserRouter>
     <Switch>
       <Route path="/" component={Home} exact/>
-      <Route path="/cadastro/video" component={CadastroVideo} />
-      <Route path="/cadastro/categoria" component={CadastroCategoria} />
+      <PrivateRoute Route path="/cadastro/video" component={CadastroVideo} />
+      <PrivateRoute Route path="/cadastro/categoria" component={CadastroCategoria} />
       <Route component={NotFound} /> 
       {/* Em é possível utilizar o código abaixo */}
       {/* <Route component={() => (<div>Página 404</div>)} /> */}
