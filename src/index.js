@@ -9,7 +9,9 @@ import{
 import Home from './pages/Home';
 import CadastroVideo from './pages/cadastro/Video';
 import CadastroCategoria from './pages/cadastro/Categoria';
+import Login from './pages/Login';
 import NotFound from './pages/notfound';
+import AcessoNegado from './pages/AcessoNegado';
 
 import { isAuthenticated } from "./services/auth";
 
@@ -31,6 +33,8 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/" component={Home} exact/>
+      <Route path="/AcessoNegado" component={AcessoNegado} exact/>
+      <Route path="/Login" component={Login} />
       <PrivateRoute Route path="/cadastro/video" component={CadastroVideo} />
       <PrivateRoute Route path="/cadastro/categoria" component={CadastroCategoria} />
       <Route component={NotFound} /> 

@@ -1,5 +1,7 @@
 import React from 'react';
-import { VideoCardContainer } from './styles';
+import { VideoCardContainer, DivIcon } from './styles';
+// import updateImg from './assets/edit.jpg';
+// import deleteImg from './assets/delete.jpg';
 
 function getYouTubeId(youtubeURL) {
   return youtubeURL
@@ -13,6 +15,7 @@ function getYouTubeId(youtubeURL) {
 function VideoCard({ videoTitle, videoURL, categoryColor }) {
   const image = `https://img.youtube.com/vi/${getYouTubeId(videoURL)}/hqdefault.jpg`;
   return (
+    <>
     <VideoCardContainer
       url={image}
       href={videoURL}
@@ -20,6 +23,7 @@ function VideoCard({ videoTitle, videoURL, categoryColor }) {
       style={{ borderColor: categoryColor || 'red' }}
       title={videoTitle}
     />
+    </>
   );
 }
 
