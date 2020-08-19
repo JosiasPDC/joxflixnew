@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import useForm from '../../../hooks/useForms';
 import FormField from '../../../components/FormField';
-import Button from '../../../components/Button';
+//import Button from '../../../components/Button';
 import videosRepository from '../../../repositories/videos';
 import categoriasRepository from '../../../repositories/categorias';
 

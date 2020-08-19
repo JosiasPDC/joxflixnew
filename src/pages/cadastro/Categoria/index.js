@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory  } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
-import Button from '../../../components/Button';
+//import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForms';
 import categoriasRepository from '../../../repositories/categorias';
+import queryString from 'query-string';
 
-function CadastroCategoria() {
+function CadastroCategoria(props) {  
+  const url = props.location.search;
+  const params = queryString.parse(url);
   const history = useHistory();
+  
   const valoresIniciais = {
     titulo: '',
     descricao: '',
@@ -17,23 +21,60 @@ function CadastroCategoria() {
       url: ''
     }
   };
+ 
+  const [categoria, setCategoria] = useState([]);  
+  useEffect(() => {
+    categoriasRepository.getAll()
+      .then((categorias) => {
+          //console.log(categorias);
+          //setCategorias(categorias);
+          if(params.id !== null && params.id !== undefined && parseInt(params.id)){
+            console.log(params.id);
+            const categoriaIdEscolhida = categorias.find((categoria) => {
+              return categoria.id.toString() === params.id.toString();
+            });
+              
+            if(categoriaIdEscolhida !== null && categoriaIdEscolhida !== undefined){
+              setCategoria(categoriaIdEscolhida);
+            }
+            else{
+              setCategoria(categoriaIdEscolhida);
+            }
+          }
+      })
+      .catch((err) => {
+        console.log(err.Message);
+      });    
+  }, []);
+
+console.log(categoria);
 
   const { handleChange, values, clearForm} = useForm(valoresIniciais);
 
   //const [categorias, setCategorias] = useState([]);  
-
-  // ============
-
   // useEffect(() => {
   //   categoriasRepository.getAll()
   //     .then((categorias) => {
-  //         console.log(categorias);
-  //         setCategorias(categorias);
+  //         //console.log(categorias);
+  //         //setCategorias(categorias);
+  //         if(params.id !== null && params.id !== undefined && parseInt(params.id)){
+  //           console.log(params.id);
+  //           const categoriaIdEscolhida = categorias.find((categoria) => {
+  //             return categoria.id.toString() === params.id.toString();
+  //           });
+            
+  //           if(categoriaIdEscolhida !== null && categoriaIdEscolhida !== undefined){
+  //             valoresIniciais.titulo = categoriaIdEscolhida.titulo;
+  //             setValores(valoresIniciais);
+  //             console.log(categoriaIdEscolhida.titulo);
+  //           }
+  //         }
   //     })
   //     .catch((err) => {
   //       console.log(err.Message);
   //     });    
-  // }, []);
+  // }, [params.id, valoresIniciais]);
+  
 
   return (
     <PageDefault>
@@ -64,7 +105,7 @@ function CadastroCategoria() {
         clearForm();
       }}
       >
-
+        
         <FormField
           label="Nome da Categoria"
           type="text"

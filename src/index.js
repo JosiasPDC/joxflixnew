@@ -37,6 +37,8 @@ ReactDOM.render(
       <Route path="/Login" component={Login} />
       <PrivateRoute Route path="/cadastro/video" component={CadastroVideo} />
       <PrivateRoute Route path="/cadastro/categoria" component={CadastroCategoria} />
+      <PrivateRoute Route path="/cadastro/categoria/:id" component={CadastroCategoria} />
+
       <Route component={NotFound} /> 
       {/* Em é possível utilizar o código abaixo */}
       {/* <Route component={() => (<div>Página 404</div>)} /> */}

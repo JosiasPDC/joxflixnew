@@ -40,6 +40,23 @@ function create(categoria){
     });
 }
 
+function remove(categoria){
+    return fetch(`${URL_CATEGORIAS}?_embed=categorias`, {
+        method: 'POST',
+        headers:{
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(categoria)
+    })
+        .then(async (respostaDoServer) => {
+         if (respostaDoServer.ok) {
+            const resposta = await respostaDoServer.json();
+            return resposta;
+          }
+          throw new Error('Não foi possível pegar os dados');
+    });
+}
+
 export default{
-    getAllWithVideos, getAll, create,
+    getAllWithVideos, getAll, create, remove,
 }

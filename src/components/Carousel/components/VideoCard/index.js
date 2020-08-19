@@ -1,5 +1,5 @@
 import React from 'react';
-import { VideoCardContainer, DivIcon } from './styles';
+import { VideoCardContainer } from './styles';
 // import updateImg from './assets/edit.jpg';
 // import deleteImg from './assets/delete.jpg';
 

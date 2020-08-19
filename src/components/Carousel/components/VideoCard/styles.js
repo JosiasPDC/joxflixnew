@@ -23,15 +23,17 @@ export const VideoCardContainer = styled.a`
   transition: opacity .3s;
   &:hover,
   &:focus {
-    opacity: .5;
-    animation: pulse 0.3s linear 1;
+    animation: pulse 0.5s ease-in;
   }
   
   &:not(:first-child) {
     margin-left: 20px;
   }
   
+  
+  @keyframes pulse{
+    25%  {transform: scale(0.9);}
+    75%  {transform: scale(1.1);}
+  }
 `;
 
-export const PulseEffect = styled.section`
-`;
