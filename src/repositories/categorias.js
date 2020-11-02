@@ -40,9 +40,9 @@ function create(categoria){
     });
 }
 
-function remove(categoria){
-    return fetch(`${URL_CATEGORIAS}?_embed=categorias`, {
-        method: 'POST',
+function update(categoria, id){
+    return fetch(`${URL_CATEGORIAS}/${id}`, {
+        method: 'PUT',
         headers:{
             'Content-type': 'application/json'
         },
@@ -57,6 +57,22 @@ function remove(categoria){
     });
 }
 
+function remove(id){
+    return fetch(`${URL_CATEGORIAS}/${id}`, {
+        method: 'DELETE',
+        headers:{
+            'Content-type': 'application/json'
+        }
+    })
+        .then(async (respostaDoServer) => {
+         if (respostaDoServer.ok) {
+            const resposta = await respostaDoServer.json();
+            return resposta;
+          }
+          throw new Error('Não foi possível pegar os dados');
+    });
+}
+
 export default{
-    getAllWithVideos, getAll, create, remove,
+    getAllWithVideos, getAll, create, update, remove,
 }

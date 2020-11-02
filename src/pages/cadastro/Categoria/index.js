@@ -45,7 +45,7 @@ function CadastroCategoria(props) {
       .catch((err) => {
         console.log(err.Message);
       });    
-  }, []);
+  }, [params.id]);
 
 console.log(categoria);
 

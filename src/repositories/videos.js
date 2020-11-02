@@ -18,6 +18,39 @@ function create(video){
     });
 }
 
+function update(categoria, id){
+    return fetch(`${URL_CATEGORIAS}/${id}`, {
+        method: 'PUT',
+        headers:{
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(categoria)
+    })
+        .then(async (respostaDoServer) => {
+         if (respostaDoServer.ok) {
+            const resposta = await respostaDoServer.json();
+            return resposta;
+          }
+          throw new Error('Não foi possível pegar os dados');
+    });
+}
+
+function remove(id){
+    return fetch(`${URL_CATEGORIAS}/${id}`, {
+        method: 'DELETE',
+        headers:{
+            'Content-type': 'application/json'
+        }
+    })
+        .then(async (respostaDoServer) => {
+         if (respostaDoServer.ok) {
+            const resposta = await respostaDoServer.json();
+            return resposta;
+          }
+          throw new Error('Não foi possível pegar os dados');
+    });
+}
+
 export default{
-    create,
+    create, update, remove,
 }

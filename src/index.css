@@ -57,3 +57,14 @@ a {
   from, to { border-color: transparent }
   50% { border-color: orange; }
 }
+
+.excluir {
+    background-image: url(./assets/img/deletebtn.png);
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+    color: black;
+    border-radius: 100px;
+    cursor: pointer;
+}
